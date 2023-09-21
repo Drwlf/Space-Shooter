@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(0.57f, 7.61f, 0);
+        
     }
 
     // Update is called once per frame
@@ -30,14 +30,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Hit: " + other.transform.name);
         if (other.tag == "Player")
         {
             Player player = other.GetComponent<Player>();
             other.transform.GetComponent<Player>().Damage();
             Destroy(this.gameObject);
-            Debug.Log("Hit: " + other.transform.name);
         }
 
         if (other.tag == "Laser")
